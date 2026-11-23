@@ -1,0 +1,202 @@
+{
+  "dateChecked": "2026-11-23",
+  "sources": [
+    {
+      "id": "scad-pop-2024",
+      "publisher": "Statistics Centre – Abu Dhabi (SCAD)",
+      "title": "Abu Dhabi Population 2024",
+      "url": "https://census.scad.gov.ae/home/population",
+      "geography": "Emirate of Abu Dhabi ONLY (not the UAE as a whole)",
+      "period": "2024 (reference date September 2024; revised)",
+      "findings": {
+        "residents": "approximately 4.14 million",
+        "medianAge": "33 years"
+      },
+      "measurementDefinition": "Resident population counts and a median age for the whole emirate.",
+      "limitation": "Emirate-level aggregate. Contains no household-size or household-composition figure in the text reviewed. Must never be presented as a UAE-wide statistic.",
+      "locator": "Page headline 'Abu Dhabi Population 2024'; population and median-age panels.",
+      "status": "verified-read",
+      "ar": {
+        "publisher": "مركز الإحصاء – أبوظبي (SCAD)",
+        "title": "سكان أبوظبي 2024",
+        "geography": "إمارة أبوظبي فقط (وليس دولة الإمارات بأكملها)",
+        "period": "2024 (تاريخ المرجع: سبتمبر 2024؛ بيانات منقّحة)",
+        "limitation": "مجاميع على مستوى الإمارة. لا يتضمن النص الذي رُوجع أي رقم لحجم الأسرة أو تركيبتها. يجب ألا يُعرض أبداً كإحصائية على مستوى دولة الإمارات."
+      }
+    },
+    {
+      "id": "yearof-2026",
+      "publisher": "UAE Year Of (national storytelling initiative)",
+      "title": "About UAE Year Of 2026",
+      "url": "https://uaeyearof.ae/en/about-year-of-2026",
+      "geography": "United Arab Emirates (thematic)",
+      "period": "2026",
+      "findings": {
+        "designation": "2026 designated the Year of Family"
+      },
+      "measurementDefinition": "None. Thematic, not demographic.",
+      "limitation": "Establishes the national theme only. The phrase 'Growing in Unity' comes from the project brief; the fetched page text confirmed the Year of Family designation but the phrase was not quoted from it.",
+      "locator": "Page text: '2026 has been designated as the Year of Family'.",
+      "status": "verified-read",
+      "ar": {
+        "publisher": "UAE Year Of (مبادرة وطنية لسرد القصص)",
+        "title": "حول عام الأسرة 2026",
+        "geography": "دولة الإمارات (سياق موضوعي)",
+        "period": "2026",
+        "limitation": "تثبت الصفحة الموضوع الوطني فقط. عبارة «نماء وانتماء» مأخوذة من موجز المشروع؛ أما نص الصفحة الذي رُوجع فأكد تسمية عام الأسرة ولم تُقتبس العبارة منه."
+      }
+    },
+    {
+      "id": "schuessler-1999",
+      "publisher": "Proceedings of the National Academy of Sciences (PNAS), via PubMed Central",
+      "title": "Ecological inference (A. A. Schuessler)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC33746/",
+      "geography": "n/a (methodological)",
+      "period": "1999 (PNAS 96(19):10578–10581)",
+      "findings": {
+        "concept": "Ecological inference is drawing conclusions about individual-level behavior from aggregate-level data."
+      },
+      "measurementDefinition": "Methodological background.",
+      "limitation": "Concept only. Says nothing about the UAE or families specifically.",
+      "locator": "Abstract (paraphrased).",
+      "status": "verified-read",
+      "ar": {
+        "publisher": "وقائع الأكاديمية الوطنية للعلوم (PNAS) عبر PubMed Central",
+        "title": "الاستدلال الإيكولوجي (أ. أ. شوسلر)",
+        "geography": "لا ينطبق (خلفية منهجية)",
+        "period": "1999 (PNAS 96(19):10578–10581)",
+        "limitation": "مفهوم منهجي فقط. لا يقول شيئاً عن الإمارات أو عن الأسر تحديداً."
+      }
+    },
+    {
+      "id": "uaestat-fcsc",
+      "publisher": "Federal Competitiveness and Statistics Centre – UAE.Stat",
+      "title": "UAE.Stat portal",
+      "url": "https://uaestat.fcsc.gov.ae/en",
+      "geography": "United Arab Emirates",
+      "period": "n/a",
+      "findings": {},
+      "measurementDefinition": "n/a",
+      "limitation": "Automated fetch returned HTTP 403 on 2026-11-23. No figure from this portal is used. Listed as a source to consult manually before submission.",
+      "locator": "n/a",
+      "status": "not-read-403",
+      "ar": {
+        "publisher": "المركز الاتحادي للتنافسية والإحصاء – UAE.Stat",
+        "title": "بوابة UAE.Stat",
+        "geography": "دولة الإمارات",
+        "period": "لا ينطبق",
+        "limitation": "أعاد الجلب الآلي الرمز 403 في 23 نوفمبر 2026، فلم تُستخدم أي أرقام منها. تُراجع يدوياً قبل التقديم."
+      }
+    }
+  ],
+  "claims": [
+    {
+      "id": "c1-size",
+      "verdict": "unsupported",
+      "citationIds": [
+        "scad-pop-2024",
+        "schuessler-1999"
+      ],
+      "title": {
+        "en": "How many people?",
+        "ar": "كم عدد الأفراد؟"
+      },
+      "assumption": {
+        "en": "The portrait assumes this family has five members.",
+        "ar": "تفترض اللوحة أن هذه الأسرة تتكوّن من خمسة أفراد."
+      },
+      "whatDataShows": {
+        "en": "SCAD reports that the Emirate of Abu Dhabi had approximately 4.14 million residents in 2024 (reference date September 2024). This is a count of people across an emirate.",
+        "ar": "يفيد مركز الإحصاء – أبوظبي بأن عدد سكان إمارة أبوظبي بلغ نحو 4.14 مليون نسمة في عام 2024 (تاريخ المرجع: سبتمبر 2024). وهذا عدد للأشخاص على مستوى الإمارة."
+      },
+      "whatItDoesNotShow": {
+        "en": "It does not tell us how many people live in any one household, or who they are to each other. The material reviewed contains no household-size distribution, so none is shown.",
+        "ar": "لا يخبرنا كم شخصاً يعيش في أي أسرة بعينها، ولا طبيعة العلاقة بينهم. والمواد التي رُوجعت لا تتضمن توزيعاً لحجم الأسرة، لذا لم نعرض أي رقم."
+      },
+      "visitorQuestion": {
+        "en": "If household size is not in this statistic, who decides who counts as family?",
+        "ar": "إذا لم يكن حجم الأسرة في هذه الإحصائية، فمن يحدّد من يُعدّ من العائلة؟"
+      },
+      "tag": {
+        "en": "Measured: Abu Dhabi residents, 2024 · Not established: household size",
+        "ar": "المقيس: سكان أبوظبي 2024 · غير مثبت: حجم الأسرة"
+      },
+      "whatMayBeInferred": {
+        "en": "A reasonable reading: a population this large presumably lives in many different household arrangements. This is an interpretation, not a measurement, and no figure here supports a “typical” household.",
+        "ar": "قراءة معقولة: من المرجّح أن يعيش عدد سكان بهذا الحجم في ترتيبات أسرية متنوعة كثيرة. هذا تفسير وليس قياساً، ولا يدعم أي رقم هنا وجود أسرة «نموذجية»."
+      }
+    },
+    {
+      "id": "c2-age",
+      "verdict": "limited",
+      "citationIds": [
+        "scad-pop-2024",
+        "schuessler-1999"
+      ],
+      "title": {
+        "en": "Whose age?",
+        "ar": "عمر مَن؟"
+      },
+      "assumption": {
+        "en": "The portrait shades each member by a “typical” age.",
+        "ar": "تُظلِّل اللوحة كل فرد وفق عمر «نموذجي»."
+      },
+      "whatDataShows": {
+        "en": "SCAD reports a median age of 33 years for the Emirate of Abu Dhabi in 2024: one midpoint for the emirate’s whole resident population.",
+        "ar": "يذكر مركز الإحصاء – أبوظبي أن العمر الوسيط في إمارة أبوظبي عام 2024 هو 33 سنة، أي نقطة منتصف واحدة لجميع سكان الإمارة."
+      },
+      "whatItDoesNotShow": {
+        "en": "It does not describe the ages of parents, grandparents or children in any household. A family may be younger, older, or span many generations; a midpoint cannot say which.",
+        "ar": "لا يصف أعمار الوالدين أو الأجداد أو الأبناء في أي أسرة. فقد تكون الأسرة أصغر سناً أو أكبر أو متعددة الأجيال، ولا يستطيع العمر الوسيط أن يحدد ذلك."
+      },
+      "visitorQuestion": {
+        "en": "Whose age is 33 supposed to be?",
+        "ar": "لمن يعود العمر 33 بالضبط؟"
+      },
+      "tag": {
+        "en": "Measured: median age 33, Abu Dhabi 2024 · Not established: any family’s ages",
+        "ar": "المقيس: العمر الوسيط 33، أبوظبي 2024 · غير مثبت: أعمار أي أسرة"
+      },
+      "whatMayBeInferred": {
+        "en": "A reasonable reading: a median of 33 means about half of the emirate’s residents are younger and half older. That describes the whole population, not any household.",
+        "ar": "قراءة معقولة: العمر الوسيط 33 يعني أن نحو نصف سكان الإمارة أصغر منه ونحو نصفهم أكبر. وهذا يصف المجتمع كله وليس أي أسرة."
+      }
+    },
+    {
+      "id": "c3-belonging",
+      "verdict": "unsupported",
+      "citationIds": [
+        "yearof-2026",
+        "schuessler-1999"
+      ],
+      "title": {
+        "en": "How close?",
+        "ar": "ما مدى القرب؟"
+      },
+      "assumption": {
+        "en": "The portrait draws threads of closeness between every member.",
+        "ar": "ترسم اللوحة خيوط قرب تصل بين كل الأفراد."
+      },
+      "whatDataShows": {
+        "en": "The UAE Year Of site designates 2026 as the Year of Family, a national theme about families. This is thematic context, not a measurement of any family’s relationships.",
+        "ar": "يعلن موقع «عام» الإماراتي أن 2026 هو عام الأسرة، وهو موضوع وطني يتعلق بالأسر. وهذا سياق موضوعي وليس قياساً لعلاقات أي أسرة."
+      },
+      "whatItDoesNotShow": {
+        "en": "Neither this page nor the demographic figures measure closeness, care or belonging inside an individual family. Population-level patterns do not automatically describe individuals (the ecological fallacy).",
+        "ar": "لا هذه الصفحة ولا الأرقام الديموغرافية تقيس القرب أو الرعاية أو الانتماء داخل أسرة بعينها. والأنماط على مستوى المجتمع لا تصف الأفراد تلقائياً (المغالطة الإيكولوجية)."
+      },
+      "visitorQuestion": {
+        "en": "What would you have to ask a family to know how close they are?",
+        "ar": "ماذا ينبغي أن نسأل العائلة لنعرف مدى قربها؟"
+      },
+      "tag": {
+        "en": "Thematic source only · Not established: closeness or belonging",
+        "ar": "مصدر موضوعي فقط · غير مثبت: القرب أو الانتماء"
+      },
+      "whatMayBeInferred": {
+        "en": "A reasonable reading: a national theme about family suggests that closeness and belonging matter in public life. That interprets the theme; it is not evidence about any family’s relationships.",
+        "ar": "قراءة معقولة: يوحي تخصيص موضوع وطني للأسرة بأن القرب والانتماء مهمان في الحياة العامة. هذا تفسير للموضوع وليس دليلاً على علاقات أي أسرة."
+      }
+    }
+  ]
+}

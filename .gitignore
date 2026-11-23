@@ -1,0 +1,8 @@
+.env
+.env*
+!.env.example
+node_modules/
+.vercel/
+.claude/
+.claude_launch_tmp
+*.log

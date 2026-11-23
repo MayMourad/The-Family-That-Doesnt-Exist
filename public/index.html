@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Family That Doesn't Exist · العائلة التي لا وجود لها</title>
+<meta name="description" content="An interactive print-and-collage artwork about what statistics can and cannot say about a family. UAE Year of Family 2026.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23F6F1E8'/%3E%3Crect x='3' y='3' width='14' height='16' fill='%233659D9'/%3E%3Ccircle cx='20' cy='20' r='8' fill='%23EF785F'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/instrument-serif-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-act="1">
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="torn" x="-5%" y="-5%" width="110%" height="110%"><feTurbulence type="fractalNoise" baseFrequency=".035 .05" numOctaves="3" seed="4" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="14"/></filter>
+</svg>
+<a class="skip" href="#main" data-i="skip">Skip to content</a>
+
+<header class="bar">
+  <div class="brand" data-i="brand">The Family That Doesn't Exist</div>
+  <nav aria-label="Chapters"><ol id="chapters"></ol></nav>
+  <div class="tools">
+    <button id="btnSkip" class="link" data-i="skipBtn">Skip to revelation</button>
+    <button id="btnLang" class="link" lang="ar" aria-label="Switch language to Arabic">العربية</button>
+  </div>
+</header>
+
+<main id="main">
+  <!-- ACT I -->
+  <section id="act1" class="hero" aria-labelledby="h1">
+    <div class="plane plane-coral" aria-hidden="true"></div>
+    <p class="mono kicker" data-i="kicker">UAE Year of Family 2026 · Digital Arts</p>
+    <h1 id="h1"><span class="ln" id="h1a"></span><span class="ln" id="h1b"></span><span class="ln" id="h1c"></span></h1>
+    <figure class="hero-print" aria-hidden="true"><canvas id="heroCanvas"></canvas><figcaption class="mono" data-i="fig0">FIG. 0 — A system tries to average a family</figcaption></figure>
+    <div class="hero-copy">
+      <p class="lede" data-i="lede"></p>
+      <div class="row">
+        <button id="btnBegin" class="btn primary" data-i="begin">Begin the experiment</button>
+        <button id="btnDemo" class="btn" data-i="demo">Guided demo (≈90 s)</button>
+      </div>
+      <p class="mono fine" data-i="heroFine"></p>
+    </div>
+  </section>
+
+  <!-- ACTS II–IV -->
+  <section id="stage" class="stage" hidden aria-labelledby="stageT">
+    <h2 id="stageT" class="visually-hidden" data-i="stageT">The average family?</h2>
+    <figure class="print">
+      <canvas id="stageCanvas" role="img"></canvas>
+      <figcaption class="mono" id="hypLabel" data-i="hyp"></figcaption>
+      <figcaption class="mono alt" id="posLabel" data-i="pos" hidden></figcaption>
+    </figure>
+    <div class="lens">
+      <p class="mono tag" data-i="lensTag">The Evidence Lens</p>
+      <p class="intro" id="intro" data-i="portraitNote"></p>
+      <p class="meter mono" id="meter" aria-live="polite"></p>
+      <div id="cards" class="sheets"></div>
+      <div id="shiftBox" class="shift" hidden>
+        <p class="big" data-i="shiftMsg"></p>
+        <button id="btnFinal" class="btn primary" data-i="toFinal">Continue to the revelation</button>
+      </div>
+      <p class="mono fine" id="aiMode"></p>
+      <p id="live" class="visually-hidden" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <!-- ACT V -->
+  <section id="act5" class="final" hidden aria-labelledby="h5">
+    <figure class="print big">
+      <button class="print-btn" id="btnZoom" aria-label="Inspect the poster full size"><canvas id="finalCanvas" role="img"></canvas></button>
+      <figcaption class="mono" data-i="zoomHint">Click the print to inspect it up close</figcaption>
+    </figure>
+    <div class="final-copy">
+      <h2 id="h5" class="statement"></h2>
+      <p class="support" data-i="final2"></p>
+      <p class="lede" data-i="central"></p>
+      <ol class="lessons" id="lessons"></ol>
+      <p class="note" data-i="reflect"></p>
+      <div class="row">
+        <button id="btnPng" class="btn primary" data-i="dlPng">Download A3 print (PNG, 300 DPI)</button>
+        <button id="btnWeb" class="btn" data-i="dlWeb">Download web size (PNG)</button>
+        <button id="btnSources" class="btn" data-i="sources">Explore sources</button>
+        <button id="btnRestart" class="btn" data-i="restart">Replay</button>
+      </div>
+      <p class="mono fine" id="expStatus" role="status"></p>
+    </div>
+  </section>
+</main>
+
+<dialog id="zoom" aria-label="Poster inspection"><button id="zoomClose" class="btn" data-i="close">Close</button><div class="zoom-scroll"><canvas id="zoomCanvas"></canvas></div></dialog>
+
+<aside id="drawer" class="drawer" hidden role="dialog" aria-modal="true" aria-labelledby="drT">
+  <div class="drawer-in">
+    <button id="drClose" class="btn close" data-i="close">Close</button>
+    <h2 id="drT" data-i="sourcesT">Sources &amp; method</h2>
+    <div id="drBody"></div>
+  </div>
+</aside>
+
+<footer class="foot"><p class="mono" data-i="footer"></p><p class="credit"><strong data-i="credit1">Created by May Ahmed Mourad</strong><span data-i="credit2">Grade 12 · ADNOC Schools Madinat Zayed (MZ)</span></p></footer>
+<script src="art.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
