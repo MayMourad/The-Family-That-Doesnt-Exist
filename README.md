@@ -3,6 +3,11 @@
 Interactive digital artwork for UAE Year of Family 2026 (Digital Arts — Web Design).
 Created by May Ahmed Mourad · Grade 12 · ADNOC Schools Madinat Zayed (MZ) — independent student work, not an official Year of Family, ADEK or ADNOC Schools product.
 
+## Live
+- Website: https://the-family-that-doesnt-exist.vercel.app (Vercel project `the-family-that-doesnt-exist`, auto-deploys from `main`)
+- Repository: https://github.com/MayMourad/The-Family-That-Doesnt-Exist (private)
+- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `ANTHROPIC_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. The rate limit is in-memory per serverless instance, so also set a spend limit on the key.
+
 ## Run
 ```
 node server.js            # Node 18+; zero dependencies, no install step  (npm start also works)
@@ -45,7 +50,7 @@ Client sends only `{claimId, lang}`. Server picks the approved sources and asks 
 | Keyboard | native buttons/links, skip link, visible focus rule, no non-native clickables; full manual Tab walk-through not completed |
 | Screen reader, Lighthouse, Firefox/Safari | **not performed** |
 | TypeScript / lint / production build | **none exist** — plain JS, no build step; `node --check` passes |
-| Deployment | **not deployed** |
+| Deployment | **deployed** on Vercel; live check: pages, fonts, evidence JSON, `/api/status`, `/api/explain` (offline mode, 400/405/413 guards), investigation flow, Arabic poster and A3 export all verified. Live AI **not** tested (no key set) |
 
 ## Known limitations
 - Only 3 claims; no UAE-wide figures (UAE.Stat returned 403 to automated fetch).
