@@ -1,8 +1,8 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
   "outputDirectory": "public",
   "buildCommand": "",
-  "functions": { "api/*.js": { "includeFiles": "public/data/evidence.json", "maxDuration": 30 } },
   "headers": [
     { "source": "/(.*)", "headers": [
       { "key": "X-Content-Type-Options", "value": "nosniff" },
