@@ -17,10 +17,9 @@ function send(res, code, body, type = 'application/json') {
 http.createServer(async (req, res) => {
   const url = new URL(req.url, 'http://x');
   if (url.pathname === '/api/status') return send(res, 200, ai.status());
-  if (url.pathname === '/api/explain' && req.method === 'POST') {
-    let raw = '';
-    for await (const ch of req) { raw += ch; if (raw.length > 1024) return send(res, 413, { error: 'too large' }); }
-    const r = await ai.explain(raw, req.socket.remoteAddress);
+  if (url.pathname === '/api/explain') {
+    if (req.method !== 'GET') return send(res, 405, { error: 'method not allowed' });
+    const r = await ai.explain(url.searchParams, req.socket.remoteAddress);
     return send(res, r.status, r.json);
   }
   const p = url.pathname === '/' ? '/index.html' : url.pathname;

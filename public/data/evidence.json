@@ -1,5 +1,5 @@
 {
-  "dateChecked": "2026-11-23",
+  "dateChecked": "2026-11-24",
   "sources": [
     {
       "id": "scad-pop-2024",
@@ -13,7 +13,7 @@
         "medianAge": "33 years"
       },
       "measurementDefinition": "Resident population counts and a median age for the whole emirate.",
-      "limitation": "Emirate-level aggregate. Contains no household-size or household-composition figure in the text reviewed. Must never be presented as a UAE-wide statistic.",
+      "limitation": "Emirate-level aggregate. Contains no household-size or household-composition figure in the text reviewed. Must never be presented as a UAE-wide statistic. The 2024 figure is a revised estimate based on administrative registers, not a census count.",
       "locator": "Page headline 'Abu Dhabi Population 2024'; population and median-age panels.",
       "status": "verified-read",
       "ar": {
@@ -21,7 +21,7 @@
         "title": "سكان أبوظبي 2024",
         "geography": "إمارة أبوظبي فقط (وليس دولة الإمارات بأكملها)",
         "period": "2024 (تاريخ المرجع: سبتمبر 2024؛ بيانات منقّحة)",
-        "limitation": "مجاميع على مستوى الإمارة. لا يتضمن النص الذي رُوجع أي رقم لحجم الأسرة أو تركيبتها. يجب ألا يُعرض أبداً كإحصائية على مستوى دولة الإمارات."
+        "limitation": "مجاميع على مستوى الإمارة. لا يتضمن النص الذي رُوجع أي رقم لحجم الأسرة أو تركيبتها. يجب ألا يُعرض أبداً كإحصائية على مستوى دولة الإمارات. رقم 2024 تقدير منقّح قائم على السجلات الإدارية وليس تعداداً."
       }
     },
     {
@@ -32,18 +32,19 @@
       "geography": "United Arab Emirates (thematic)",
       "period": "2026",
       "findings": {
-        "designation": "2026 designated the Year of Family"
+        "designation": "2026 designated the Year of Family",
+        "slogan": "Growing in Unity"
       },
       "measurementDefinition": "None. Thematic, not demographic.",
-      "limitation": "Establishes the national theme only. The phrase 'Growing in Unity' comes from the project brief; the fetched page text confirmed the Year of Family designation but the phrase was not quoted from it.",
-      "locator": "Page text: '2026 has been designated as the Year of Family'.",
+      "limitation": "Establishes the national theme and slogan only. The Arabic wording «نماء وانتماء» is supplied by the project brief; it does not appear on the page. No demographic measurement.",
+      "locator": "Page text: '2026 has been designated as the Year of Family'; slogan 'Growing in Unity' (re-checked 2026-11-24).",
       "status": "verified-read",
       "ar": {
         "publisher": "UAE Year Of (مبادرة وطنية لسرد القصص)",
         "title": "حول عام الأسرة 2026",
         "geography": "دولة الإمارات (سياق موضوعي)",
         "period": "2026",
-        "limitation": "تثبت الصفحة الموضوع الوطني فقط. عبارة «نماء وانتماء» مأخوذة من موجز المشروع؛ أما نص الصفحة الذي رُوجع فأكد تسمية عام الأسرة ولم تُقتبس العبارة منه."
+        "limitation": "تثبت الصفحة الموضوع الوطني وشعاره «Growing in Unity» فقط. أما العبارة العربية «نماء وانتماء» فمصدرها موجز المشروع ولا ترد في الصفحة. لا قياس ديموغرافياً."
       }
     },
     {
@@ -58,7 +59,7 @@
       },
       "measurementDefinition": "Methodological background.",
       "limitation": "Concept only. Says nothing about the UAE or families specifically.",
-      "locator": "Abstract (paraphrased).",
+      "locator": "Abstract (definition, paraphrased); main text (the term 'ecological fallacy').",
       "status": "verified-read",
       "ar": {
         "publisher": "وقائع الأكاديمية الوطنية للعلوم (PNAS) عبر PubMed Central",
@@ -77,7 +78,7 @@
       "period": "n/a",
       "findings": {},
       "measurementDefinition": "n/a",
-      "limitation": "Automated fetch returned HTTP 403 on 2026-11-23. No figure from this portal is used. Listed as a source to consult manually before submission.",
+      "limitation": "Automated fetch returned HTTP 403 on 23 and 24 Nov 2026 (as did fcsc.gov.ae). No figure from this portal is used. Listed as a source to consult manually before submission.",
       "locator": "n/a",
       "status": "not-read-403",
       "ar": {
@@ -85,7 +86,7 @@
         "title": "بوابة UAE.Stat",
         "geography": "دولة الإمارات",
         "period": "لا ينطبق",
-        "limitation": "أعاد الجلب الآلي الرمز 403 في 23 نوفمبر 2026، فلم تُستخدم أي أرقام منها. تُراجع يدوياً قبل التقديم."
+        "limitation": "أعاد الجلب الآلي الرمز 403 في 23 و24 نوفمبر 2026 (وكذلك fcsc.gov.ae)، فلم تُستخدم أي أرقام منها. تُراجع يدوياً قبل التقديم."
       }
     }
   ],
@@ -106,8 +107,8 @@
         "ar": "تفترض اللوحة أن هذه الأسرة تتكوّن من خمسة أفراد."
       },
       "whatDataShows": {
-        "en": "SCAD reports that the Emirate of Abu Dhabi had approximately 4.14 million residents in 2024 (reference date September 2024). This is a count of people across an emirate.",
-        "ar": "يفيد مركز الإحصاء – أبوظبي بأن عدد سكان إمارة أبوظبي بلغ نحو 4.14 مليون نسمة في عام 2024 (تاريخ المرجع: سبتمبر 2024). وهذا عدد للأشخاص على مستوى الإمارة."
+        "en": "SCAD reports a revised 2024 figure of approximately 4.14 million residents for the Emirate of Abu Dhabi (reference date September 2024, based on administrative registers). This is a count of people across an emirate.",
+        "ar": "يورد مركز الإحصاء – أبوظبي رقماً منقّحاً لعام 2024 يبلغ نحو 4.14 مليون نسمة في إمارة أبوظبي (تاريخ المرجع: سبتمبر 2024، استناداً إلى السجلات الإدارية). وهذا عدد للأشخاص على مستوى الإمارة."
       },
       "whatItDoesNotShow": {
         "en": "It does not tell us how many people live in any one household, or who they are to each other. The material reviewed contains no household-size distribution, so none is shown.",
