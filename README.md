@@ -6,7 +6,7 @@ Created by May Ahmed Mourad · Grade 12 · ADNOC Schools Madinat Zayed (MZ) — 
 ## Live
 - Website: https://the-family-that-doesnt-exist.vercel.app (Vercel project `the-family-that-doesnt-exist`, auto-deploys from `main`)
 - Repository: https://github.com/MayMourad/The-Family-That-Doesnt-Exist (private)
-- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `ANTHROPIC_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. The rate limit is in-memory per serverless instance, so also set a spend limit on the key.
+- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `ANTHROPIC_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. Spend is bounded by caching (one model call per claim × language per cache window) and the in-memory limiter is only best-effort, so also set a spend limit on the key.
 
 ## Run
 ```
@@ -24,7 +24,7 @@ Open http://localhost:3000. Deploy to any Node host (Render, Railway, Fly, VPS) 
 - `public/fonts/` — bundled OFL fonts (+ licences)
 - `public/data/evidence.json` — approved sources (EN/AR) + 3 claims with Known / Inferred / Unknown text (EN/AR)
 - `server.js` — static server + `/api/explain` · `test/ai.test.js` — automated server tests
-- `docs/` — EVIDENCE, DESIGN_REFERENCES, SUBMISSION (judging script)
+- `docs/` — ACCEPTANCE (status of the 5 standards), AI_ACTIVATION, EVIDENCE, DESIGN_REFERENCES, SUBMISSION (pitch + script)
 
 ## The paper-peel (Evidence Lens only)
 Each assumption is a printed butter-paper sheet covering its evidence. Scrolling after opening a sheet scrubs the peel: the cover's edge (a noise-displaced clip-path) retreats while a rolled "back of paper" band with a cast shadow rides the edge. Native CSS/JS only — no animation library, no pinning, no scroll trapping. A "Lift the paper" button does the same peel for keyboard users and when the page cannot scroll further. Under `prefers-reduced-motion` the cover is omitted and the evidence is shown at once. Uncovering evidence never marks it as reviewed: **Ask the evidence critic** and **Challenge this assumption** stay explicit actions, and only a challenge changes the artwork.
@@ -33,7 +33,7 @@ Each assumption is a printed butter-paper sheet covering its evidence. Scrolling
 Final screen → **A3 print**: 3508 × 4960 px PNG with a 300 DPI header (~25 MB because of paper grain) or **web size** 1400 px. Same investigation path → same poster (seeded by the order of challenged claims; edition number derived from it). Discreet creator credit is printed in the poster footer (EN right-aligned, AR mirrored left).
 
 ## How the AI is bounded
-Client sends only `{claimId, lang}`. Server picks the approved sources and asks the model for JSON `{verdict, whatDataShows (KNOWN), whatMayBeInferred (INFERRED), whatItDoesNotShow (UNKNOWN), visitorQuestion, citationIds}`; validates it; rejects any citation outside that claim's catalogue entries; forces the hard-coded verified verdict (a disagreeing model is flagged, not trusted); renders links from the local catalogue. No key, rate-limit (10/10 min/IP) or provider error → curated text labelled **"Offline curated text · not AI"**. A stale answer is dropped on language switch rather than shown in the wrong language.
+Client sends only `GET /api/explain?claimId=<id>&lang=<en|ar>` (strict allow-list; anything else is a 400; no visitor text reaches the model). Server picks the approved sources and asks the model for JSON `{verdict, whatDataShows (KNOWN), whatMayBeInferred (INFERRED), whatItDoesNotShow (UNKNOWN), visitorQuestion, citationIds}`; validates it; rejects any citation outside that claim's catalogue entries; forces the hard-coded verified verdict (a disagreeing model is flagged, not trusted); renders links from the local catalogue. No key, rate-limit (10/10 min/IP) or provider error → curated text labelled **"Offline curated text · not AI"**. A stale answer is dropped on language switch rather than shown in the wrong language.
 
 ## Feature status
 | Feature | Status |
@@ -45,8 +45,8 @@ Client sends only `{claimId, lang}`. Server picks the approved sources and asks 
 | Creator credits | footer (EN/AR), sources panel, poster footer |
 | EN/AR, RTL, language switch keeps progress | implemented · checked mid-peel; sources now localized |
 | Poster export A3/300 DPI + web | implemented · EN and AR files rendered and footers inspected; browser save dialog not exercised |
-| Server endpoint + validation + fallback | `npm test`: 7/7 pass against a local mock |
-| **Real Anthropic API call** | implemented · **NOT tested** (no key available). Requires credentials |
+| Server endpoint + validation + fallback | `npm test`: 9/9 pass against a local mock |
+| **Real Anthropic API call** | implemented and hardened · **NOT tested against the real API** (no key). See docs/AI_ACTIVATION.md and `scripts/verify-live-ai.js` |
 | Keyboard | native buttons/links, skip link, visible focus rule, no non-native clickables; full manual Tab walk-through not completed |
 | Screen reader, Lighthouse, Firefox/Safari | **not performed** |
 | TypeScript / lint / production build | **none exist** — plain JS, no build step; `node --check` passes |
