@@ -6,7 +6,7 @@ Created by May Ahmed Mourad · Grade 12 · ADNOC Schools Madinat Zayed (MZ) — 
 ## Live
 - Website: https://the-family-that-doesnt-exist.vercel.app (Vercel project `the-family-that-doesnt-exist`, auto-deploys from `main`)
 - Repository: https://github.com/MayMourad/The-Family-That-Doesnt-Exist (private)
-- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `GEMINI_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. Spend is bounded by caching (one model call per claim × language per cache window) and the in-memory limiter is only best-effort, so also set a spend limit on the key.
+- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `GEMINI_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. Spend is bounded by caching (one model call per claim × language per cache window) and the in-memory limiter is only best-effort, the free-tier quota is the other backstop. If you ever enable billing, set a budget alert.
 
 ## Run
 ```
@@ -45,15 +45,16 @@ Client sends only `GET /api/explain?claimId=<id>&lang=<en|ar>` (strict allow-lis
 | Creator credits | footer (EN/AR), sources panel, poster footer |
 | EN/AR, RTL, language switch keeps progress | implemented · checked mid-peel; sources now localized |
 | Poster export A3/300 DPI + web | implemented · EN and AR files rendered and footers inspected; browser save dialog not exercised |
-| Server endpoint + validation + fallback | `npm test`: 15/15 pass against a local mock Gemini |
-| **Real Gemini API call** | implemented and hardened · **NOT tested against the real API** (no key). See docs/AI_ACTIVATION.md and `scripts/verify-live-ai.js` |
+| Server endpoint + validation + fallback | `npm test`: 16/16 pass against a local mock Gemini |
+| **Real Gemini API call** | **verified on production** (27 Nov 2026): `gemini-3.5-flash-lite`, 6/6 checks EN/AR, badge "Live AI · source-bound". Real provider outages not deliberately triggered (mock only). See docs/ACCEPTANCE.md |
 | Keyboard | native buttons/links, skip link, visible focus rule, no non-native clickables; full manual Tab walk-through not completed |
 | Screen reader, Lighthouse, Firefox/Safari | **not performed** |
 | TypeScript / lint / production build | **none exist** — plain JS, no build step; `node --check` passes |
-| Deployment | **deployed** on Vercel; live check: pages, fonts, evidence JSON, `/api/status`, `/api/explain` (offline mode, 400/405/413 guards), investigation flow, Arabic poster and A3 export all verified. Live AI **not** tested (no key set) |
+| Deployment | **deployed** on Vercel; live check: pages, fonts, evidence JSON, `/api/status`, `/api/explain` (offline mode, 400/405/413 guards), investigation flow, Arabic poster and A3 export all verified. live Gemini verified (6/6) |
 
 ## Known limitations
 - Only 3 claims; no UAE-wide figures (UAE.Stat returned 403 to automated fetch).
 - Poster renders cost ~18–65 ms per frame in the test pane while animating (nothing when idle); weak phones may drop frames during the fracture.
 - `prefers-reduced-motion` was exercised through the `?motion=reduce` flag, not the OS setting.
-- Arabic copy is mine; a native speaker should review before submission.
+- Arabic copy is mine; a native speaker should review it. Live Arabic AI wording is sometimes stiff; the validator checks numbers, citations and format, not meaning.
+- Standards 3–5 each still have a human/device test outstanding (first-time visitor, real phone, Safari/Firefox, screen reader): see docs/ACCEPTANCE.md.

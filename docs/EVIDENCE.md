@@ -19,3 +19,6 @@ No number appears unless it is on a page that was read. The live AI is additiona
 ## Not verified / open
 - UAE-wide figures (portal blocks automated access). If you want one, read it by hand and add it with year, unit and scope.
 - Whether SCAD publishes household-size statistics elsewhere. None was seen on the page reviewed, and the site says only that.
+
+## 27 Nov content review
+Two curated "Inferred" sentences were softened because they presumed more than the sources support: c1 now says only that a count like this describes the emirate as a whole; c3 now says only that designating a year for family signals national attention to family (it no longer claims closeness or belonging "matter in public life"). The Arabic name of the Year Of site was corrected. The live AI prompt for c3 now forbids claiming the designation reflects bonds, values or feelings. Sources were not re-fetched on this date (last full re-check: 24 Nov 2026).

@@ -9,7 +9,7 @@
 
 **الوصف (AR):** عمل تفاعلي يطلب من نظام ذكي «رسم العائلة المتوسطة» من الإحصاءات العامة، فتظهر لوحة طباعية واثقة. وكلما رفع الزائر الورقة عن افتراض ما وقرأ ما يثبته مصدر موثَّق وما لا يثبته، تتصدّع اللوحة وتتحول إلى كولاج من الإمكانات الفنية لا إلى عيّنة من أسر حقيقية. يقول العمل إن البيانات تصف المجتمع لكنها لا تخبرنا بكل ما يجعل العائلة عائلة، وإن الانتماء في عام الأسرة ليس رقماً.
 
-**AI role:** an evidence-bound critic. Server-side; input restricted to three approved investigation IDs; output schema-, citation- and number-validated; the verified verdict overrides the model; labelled offline fallback. In the current deployment the key is **not** configured, so it runs in offline mode (see docs/AI_ACTIVATION.md and docs/ACCEPTANCE.md).
+**AI role:** an evidence-bound critic. Server-side; input restricted to three approved investigation IDs; output schema-, citation- and number-validated; the verified verdict overrides the model; labelled offline fallback. The live deployment uses Google Gemini (`gemini-3.5-flash-lite`); verified on production on 27 Nov 2026 (6/6 checks, English and Arabic; see docs/ACCEPTANCE.md). If Gemini is ever unavailable, or an answer fails validation, the site shows clearly labelled offline text instead.
 **Method:** docs/EVIDENCE.md. **Technical summary:** Node serverless functions on Vercel, vanilla JS, one canvas renderer (halftone, torn paper, overprint) shared by the on-screen poster and the A3 / 300 DPI export, SVG filters, native View Transitions.
 Dimensions, team and administrative fields: not supplied — fill in yourself.
 
@@ -49,12 +49,12 @@ Shortcut: **Skip to revelation** (top bar) reaches the final screen in one click
 3. It is bilingual (RTL) and exports a print-ready A3 / 300 DPI poster that reproduces the visitor's path.
 
 ### Likely questions
-- **"Is the AI real?"** When a server key is configured, the critic calls a Google Gemini model on the server and the badge says "Live AI"; otherwise it says "Offline curated text · not AI". State which mode the site is in on the day (`node scripts/verify-live-ai.js` tells you).
+- **"Is the AI real, and can it make things up?"** Yes: the critic calls Google Gemini on the server, and the badge says "Live AI · source-bound". It is not a chatbot: visitors cannot type to it, it only sees the approved source excerpts for the one assumption on screen, and my code rejects its answer if it contains a number or citation that is not in those sources, then shows clearly labelled offline text instead. Code cannot judge meaning, so I read the answers and constrained each one to its own topic. If asked about failure: the badge says "Offline curated text · not AI" whenever the model is not used.
 - **"Where do the numbers come from, and could they be wrong?"** Statistics Centre Abu Dhabi, Abu Dhabi Population 2024: about 4.14 million residents and a median age of 33, emirate-level only and a revised register-based estimate. I also cite the UAE Year Of page and a 1999 PNAS paper on ecological inference. I re-read each page on 24 Nov 2026. No UAE-wide figure is shown because the national portal blocked my automated access.
 - **"Does it prove people learn from it?"** No. Impact is a goal; I have not run a study. What I can show is that every claim is traceable and the artwork follows the visitor's real choices.
 
 ## Remaining actions before submitting
-1. Switch on live AI following docs/AI_ACTIVATION.md and run `node scripts/verify-live-ai.js`. If you do not, say "offline mode" honestly in the pitch.
+1. (Done 27 Nov) Live AI is on. Re-run `node scripts/verify-live-ai.js` on the day to confirm the free-tier quota has not run out; if the badge ever says "Offline curated text", say so honestly.
 2. Have a native Arabic speaker read the Arabic copy, and confirm the «نماء وانتماء» wording against an official source.
 3. Click through once on a real phone and in Safari/Firefox.
 4. Record the screen capture; fill in administrative fields yourself.
