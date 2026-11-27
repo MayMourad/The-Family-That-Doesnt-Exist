@@ -123,8 +123,8 @@
         "ar": "المقيس: سكان أبوظبي 2024 · غير مثبت: حجم الأسرة"
       },
       "whatMayBeInferred": {
-        "en": "A reasonable reading: a population this large presumably lives in many different household arrangements. This is an interpretation, not a measurement, and no figure here supports a “typical” household.",
-        "ar": "قراءة معقولة: من المرجّح أن يعيش عدد سكان بهذا الحجم في ترتيبات أسرية متنوعة كثيرة. هذا تفسير وليس قياساً، ولا يدعم أي رقم هنا وجود أسرة «نموذجية»."
+        "en": "A reasonable reading: a count like this describes the emirate as a whole. It is an interpretation, not a measurement of households, and no figure here supports a “typical” household.",
+        "ar": "قراءة معقولة: عدد كهذا يصف الإمارة ككل. وهذا تفسير وليس قياساً للأسر، ولا يدعم أي رقم هنا وجود أسرة «نموذجية»."
       }
     },
     {
@@ -180,7 +180,7 @@
       },
       "whatDataShows": {
         "en": "The UAE Year Of site designates 2026 as the Year of Family, a national theme about families. This is thematic context, not a measurement of any family’s relationships.",
-        "ar": "يعلن موقع «عام» الإماراتي أن 2026 هو عام الأسرة، وهو موضوع وطني يتعلق بالأسر. وهذا سياق موضوعي وليس قياساً لعلاقات أي أسرة."
+        "ar": "يعلن موقع UAE Year Of أن 2026 هو عام الأسرة، بشعار «Growing in Unity»، وهو موضوع وطني يتعلق بالأسر. وهذا سياق موضوعي وليس قياساً لعلاقات أي أسرة."
       },
       "whatItDoesNotShow": {
         "en": "Neither this page nor the demographic figures measure closeness, care or belonging inside an individual family. Population-level patterns do not automatically describe individuals (the ecological fallacy).",
@@ -195,8 +195,8 @@
         "ar": "مصدر موضوعي فقط · غير مثبت: القرب أو الانتماء"
       },
       "whatMayBeInferred": {
-        "en": "A reasonable reading: a national theme about family suggests that closeness and belonging matter in public life. That interprets the theme; it is not evidence about any family’s relationships.",
-        "ar": "قراءة معقولة: يوحي تخصيص موضوع وطني للأسرة بأن القرب والانتماء مهمان في الحياة العامة. هذا تفسير للموضوع وليس دليلاً على علاقات أي أسرة."
+        "en": "A reasonable reading: designating a year for family signals national attention to family. That interprets the designation; it is not evidence about closeness, belonging or any family’s relationships.",
+        "ar": "قراءة معقولة: تخصيص عام للأسرة يدل على اهتمام وطني بها. وهذا تفسير للتسمية وليس دليلاً على القرب أو الانتماء أو علاقات أي أسرة."
       }
     }
   ]
