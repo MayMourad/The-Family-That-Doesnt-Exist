@@ -30,15 +30,15 @@ before(async () => {
     res.end(JSON.stringify(gem(m))); }); });
   await new Promise(r => mock.listen(3301, r));
   const env = { ...process.env, GEMINI_BASE_URL: 'http://localhost:3301', GEMINI_TIMEOUT_MS: '1500' };
-  srv = spawn(process.execPath, ['server.js'], { cwd: path.join(__dirname, '..'), env: { ...env, PORT: '3302', GEMINI_API_KEY: 'test-key-123', AI_IP_LIMIT: '1000' }, stdio: 'ignore' });
+  srv = spawn(process.execPath, ['server.js'], { cwd: path.join(__dirname, '..'), env: { ...env, PORT: '3302', GEMINI_API_KEY: 'AIzaSyTESTKEYFORMOCKONLY1234567890', AI_IP_LIMIT: '1000' }, stdio: 'ignore' });
   srvNoKey = spawn(process.execPath, ['server.js'], { cwd: path.join(__dirname, '..'), env: { ...env, PORT: '3303', GEMINI_API_KEY: '' }, stdio: 'ignore' });
-  srvLimit = spawn(process.execPath, ['server.js'], { cwd: path.join(__dirname, '..'), env: { ...env, PORT: '3304', GEMINI_API_KEY: 'test-key-123', AI_IP_LIMIT: '2' }, stdio: 'ignore' });
+  srvLimit = spawn(process.execPath, ['server.js'], { cwd: path.join(__dirname, '..'), env: { ...env, PORT: '3304', GEMINI_API_KEY: 'AIzaSyTESTKEYFORMOCKONLY1234567890', AI_IP_LIMIT: '2' }, stdio: 'ignore' });
   await new Promise(r => setTimeout(r, 1000));
 });
 after(() => { srv.kill(); srvNoKey.kill(); srvLimit.kill(); mock.close(); });
 
 // Each scenario uses a different (claim, lang) pair because successful answers are cached per pair (a feature under test).
-test('valid model reply: live, structure kept, verified verdict kept, key sent only to the provider', async () => { mode = 'good'; const r = await ask(3302, 'c2-age', 'en'); assert.equal(r.mode, 'live'); assert.equal(r.verdict, 'limited'); assert.equal(r.flagged, false); assert.ok(r.whatMayBeInferred); assert.equal(sawKey, 'test-key-123'); assert.ok(sawThinking >= 1, 'minimal thinking requested'); });
+test('valid model reply: live, structure kept, verified verdict kept, key sent only to the provider', async () => { mode = 'good'; const r = await ask(3302, 'c2-age', 'en'); assert.equal(r.mode, 'live'); assert.equal(r.verdict, 'limited'); assert.equal(r.flagged, false); assert.ok(r.whatMayBeInferred); assert.equal(sawKey, 'AIzaSyTESTKEYFORMOCKONLY1234567890'); assert.ok(sawThinking >= 1, 'minimal thinking requested'); });
 test('missing API key -> labelled offline fallback, no provider call', async () => { hits = 0; const r = await ask(3303, 'c1-size', 'en'); assert.equal(r.mode, 'offline'); assert.equal(r.reason, 'no-api-key'); assert.equal(hits, 0); assert.equal((await (await fetch('http://localhost:3303/api/status')).json()).liveAI, false); });
 test('invalid API key -> offline fallback with reason invalid-key', async () => { mode = 'badkey'; const r = await ask(3302, 'c1-size', 'en'); assert.equal(r.mode, 'offline'); assert.equal(r.reason, 'invalid-key'); });
 test('provider timeout -> offline fallback with reason timeout, quickly', async () => { mode = 'timeout'; const t0 = Date.now(); const r = await ask(3302, 'c1-size', 'ar'); assert.equal(r.mode, 'offline'); assert.equal(r.reason, 'timeout'); assert.ok(Date.now() - t0 < 3900, 'must not wait for the slow provider'); });
@@ -62,7 +62,7 @@ test('cost cap: 60 mixed requests cause few model calls; cached answers cause no
   assert.ok(hits <= 6, `model calls: ${hits}`);   // at most one per claim x language, even for a simultaneous burst
   hits = 0; for (let i = 0; i < 20; i++) await ask(3302, 'c2-age', 'en'); assert.equal(hits, 0, 'cached answers must not call the model again');
 });
-test('API key never appears in any served file or response', async () => { for (const f of ['/', '/app.js', '/art.js', '/data/evidence.json', '/api/status', '/api/explain?claimId=c2-age&lang=en', '/api/explain?claimId=c1-size&lang=ar']) assert.ok(!(await (await fetch('http://localhost:3302' + f)).text()).includes('test-key-123'), f); });
+test('API key never appears in any served file or response', async () => { for (const f of ['/', '/app.js', '/art.js', '/data/evidence.json', '/api/status', '/api/explain?claimId=c2-age&lang=en', '/api/explain?claimId=c1-size&lang=ar']) assert.ok(!(await (await fetch('http://localhost:3302' + f)).text()).includes('AIzaSyTESTKEYFORMOCKONLY1234567890'), f); });
 test('Vercel handler: offline answers get a short edge cache, rejects get none', async () => {
   const handler = require('../api/explain');
   const run = (qs) => new Promise(r => { const res = { h: {}, statusCode: 200, setHeader(k, v) { this.h[k] = v; }, end(b) { r({ s: this.statusCode, h: this.h, b: JSON.parse(b) }); } }; handler({ method: 'GET', url: '/api/explain?' + qs, headers: {} }, res); });
