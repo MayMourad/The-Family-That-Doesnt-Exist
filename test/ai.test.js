@@ -26,7 +26,7 @@ before(async () => {
     if (mode === 'timeout') return setTimeout(() => { try { res.end('{}'); } catch {} }, 4000);
     const m = mode === 'badcite' ? { ...good(), citationIds: ['made-up'] } : mode === 'mismatch' ? { ...good(), verdict: 'supported' }
       : mode === 'invented' ? { ...good(), whatDataShows: 'The median age is 33 and 72% of families have five members.' } : mode === 'prose' ? 'no json here'
-      : mode === 'fenced' ? '```json\n' + JSON.stringify(good()) + '\n```' : good();
+      : mode === 'labelled' ? { ...good(), whatDataShows: 'KNOWN: SCAD reports a median age of 33 years in 2024 (scad-pop-2024).', whatItDoesNotShow: 'UNKNOWN: Any household’s ages (see schuessler-1999).' } : mode === 'fenced' ? '```json\n' + JSON.stringify(good()) + '\n```' : good();
     res.end(JSON.stringify(gem(m))); }); });
   await new Promise(r => mock.listen(3301, r));
   const env = { ...process.env, GEMINI_BASE_URL: 'http://localhost:3301', GEMINI_TIMEOUT_MS: '1500' };
@@ -70,3 +70,9 @@ test('Vercel handler: offline answers get a short edge cache, rejects get none',
   assert.equal((await run('claimId=c1-size&lang=en&junk=1')).h['cache-control'], 'no-store');
 });
 test('per-IP limiter (best effort) trips on repeated uncached calls and falls back to offline', async () => { mode = 'good'; const r1 = await ask(3304, 'c2-age', 'en'), r2 = await ask(3304, 'c2-age', 'ar'), r3 = await ask(3304, 'c1-size', 'en'); assert.equal(r1.mode, 'live'); assert.equal(r2.mode, 'live'); assert.equal(r3.mode, 'offline'); assert.equal(r3.reason, 'rate-limited'); });
+test('cosmetic clean-up strips redundant labels and known source ids only', () => {
+  const { _tidy } = require('../lib/ai');
+  const r = _tidy({ whatDataShows: 'KNOWN: SCAD reports 33 (scad-pop-2024).', whatMayBeInferred: 'INFERRED - A cautious reading (yearof-2026, schuessler-1999).', whatItDoesNotShow: 'UNKNOWN：Not a family (see note) (random-id).', visitorQuestion: 'Whose age?' });
+  assert.equal(r.whatDataShows, 'SCAD reports 33.'); assert.equal(r.whatMayBeInferred, 'A cautious reading.');
+  assert.equal(r.whatItDoesNotShow, 'Not a family (see note) (random-id).', 'unknown parentheses must be left alone'); assert.equal(r.visitorQuestion, 'Whose age?');
+});
