@@ -1,1 +1,1 @@
-{ "name": "the-family-that-doesnt-exist", "version": "2.1.0", "private": true, "description": "Interactive artwork, UAE Year of Family 2026", "scripts": { "start": "node server.js", "test": "node --test test/ai.test.js" }, "engines": { "node": ">=18" } }
+{"name":"the-family-that-doesnt-exist","version":"2.1.0","private":true,"description":"Interactive artwork, UAE Year of Family 2026","scripts":{"start":"node server.js","test":"node --test test/ai.test.js"},"engines":{"node":">=18"},"dependencies":{"@google/genai":"^3.6.1"}}

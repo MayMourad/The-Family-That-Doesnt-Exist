@@ -49,7 +49,7 @@ Shortcut: **Skip to revelation** (top bar) reaches the final screen in one click
 3. It is bilingual (RTL) and exports a print-ready A3 / 300 DPI poster that reproduces the visitor's path.
 
 ### Likely questions
-- **"Is the AI real?"** When a server key is configured, the critic calls an Anthropic model on the server and the badge says "Live AI"; otherwise it says "Offline curated text · not AI". State which mode the site is in on the day (`node scripts/verify-live-ai.js` tells you).
+- **"Is the AI real?"** When a server key is configured, the critic calls a Google Gemini model on the server and the badge says "Live AI"; otherwise it says "Offline curated text · not AI". State which mode the site is in on the day (`node scripts/verify-live-ai.js` tells you).
 - **"Where do the numbers come from, and could they be wrong?"** Statistics Centre Abu Dhabi, Abu Dhabi Population 2024: about 4.14 million residents and a median age of 33, emirate-level only and a revised register-based estimate. I also cite the UAE Year Of page and a 1999 PNAS paper on ecological inference. I re-read each page on 24 Nov 2026. No UAE-wide figure is shown because the national portal blocked my automated access.
 - **"Does it prove people learn from it?"** No. Impact is a goal; I have not run a study. What I can show is that every claim is traceable and the artwork follows the visitor's real choices.
 

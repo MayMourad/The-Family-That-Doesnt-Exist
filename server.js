@@ -1,5 +1,5 @@
 // Zero-dependency local server: static files from public/ + the shared AI endpoint (lib/ai.js).
-// Run: node server.js   (optional: ANTHROPIC_API_KEY, ANTHROPIC_MODEL, ANTHROPIC_BASE_URL, PORT)
+// Run: node server.js   (optional: GEMINI_API_KEY, GEMINI_MODEL, GEMINI_BASE_URL, PORT)
 const http = require('http');
 const fs = require('fs');
 const path = require('path');

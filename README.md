@@ -6,17 +6,17 @@ Created by May Ahmed Mourad · Grade 12 · ADNOC Schools Madinat Zayed (MZ) — 
 ## Live
 - Website: https://the-family-that-doesnt-exist.vercel.app (Vercel project `the-family-that-doesnt-exist`, auto-deploys from `main`)
 - Repository: https://github.com/MayMourad/The-Family-That-Doesnt-Exist (private)
-- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `ANTHROPIC_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. Spend is bounded by caching (one model call per claim × language per cache window) and the in-memory limiter is only best-effort, so also set a spend limit on the key.
+- Deploy notes: `vercel.json` sets `framework: null` (otherwise Vercel treats `server.js` as a Node app and skips `api/`). `api/explain.js` and `api/status.js` share `lib/ai.js` with the local server. For real AI add `GEMINI_API_KEY` in Vercel → Settings → Environment Variables (Production), then redeploy; without it the site runs in labelled offline mode. Spend is bounded by caching (one model call per claim × language per cache window) and the in-memory limiter is only best-effort, so also set a spend limit on the key.
 
 ## Run
 ```
 node server.js            # Node 18+; zero dependencies, no install step  (npm start also works)
 npm test                  # server/AI tests against a LOCAL MOCK of the provider
 # optional live AI (server-side only; the key never reaches the browser):
-$env:ANTHROPIC_API_KEY="sk-..."        # PowerShell;  set ANTHROPIC_API_KEY=... in cmd
-$env:ANTHROPIC_MODEL="claude-sonnet-5-5"   # optional (this is the default)
+$env:GEMINI_API_KEY="sk-..."        # PowerShell;  set GEMINI_API_KEY=... in cmd
+$env:GEMINI_MODEL="gemini-3.5-flash-lite"   # optional (this is the default)
 ```
-Open http://localhost:3000. Deploy to any Node host (Render, Railway, Fly, VPS) and set `ANTHROPIC_API_KEY` as a host secret. It is not a static-only site, because `/api/explain` runs on the server. `?motion=reduce` forces the reduced-motion layout (QA aid).
+Open http://localhost:3000. Deploy to any Node host (Render, Railway, Fly, VPS) and set `GEMINI_API_KEY` as a host secret. It is not a static-only site, because `/api/explain` runs on the server. `?motion=reduce` forces the reduced-motion layout (QA aid).
 
 ## Structure
 - `public/art.js` — the poster renderer ("The Impossible Portrait"): one canvas painter for the on-screen living poster and the print export
@@ -45,8 +45,8 @@ Client sends only `GET /api/explain?claimId=<id>&lang=<en|ar>` (strict allow-lis
 | Creator credits | footer (EN/AR), sources panel, poster footer |
 | EN/AR, RTL, language switch keeps progress | implemented · checked mid-peel; sources now localized |
 | Poster export A3/300 DPI + web | implemented · EN and AR files rendered and footers inspected; browser save dialog not exercised |
-| Server endpoint + validation + fallback | `npm test`: 9/9 pass against a local mock |
-| **Real Anthropic API call** | implemented and hardened · **NOT tested against the real API** (no key). See docs/AI_ACTIVATION.md and `scripts/verify-live-ai.js` |
+| Server endpoint + validation + fallback | `npm test`: 15/15 pass against a local mock Gemini |
+| **Real Gemini API call** | implemented and hardened · **NOT tested against the real API** (no key). See docs/AI_ACTIVATION.md and `scripts/verify-live-ai.js` |
 | Keyboard | native buttons/links, skip link, visible focus rule, no non-native clickables; full manual Tab walk-through not completed |
 | Screen reader, Lighthouse, Firefox/Safari | **not performed** |
 | TypeScript / lint / production build | **none exist** — plain JS, no build step; `node --check` passes |
